@@ -30,7 +30,7 @@ newspapers.forEach((newspaper) => {
     const $ = cheerio.load(html);
 
     $('a:contains("climate")', html).each(function () {
-      const title = $(this).text().trim();
+      const title = $(this).text();
       const url = newspaper.base + $(this).attr('href');
       articles.push({
         title,
@@ -68,7 +68,7 @@ app.get('/news/:newspaperId', (req, res) => {
       const specificArticles = [];
 
       $('a:contains("climate")', html).each(function () {
-        const title = $(this).text().trim;
+        const title = $(this).text();
         const url = newspaperBase + $(this).attr('href');
         specificArticles.push({
           title,
